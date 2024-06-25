@@ -6,3 +6,4 @@ pydantic-settings
 numpy
 loguru
 openai
+uvloop
