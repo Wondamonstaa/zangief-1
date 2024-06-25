@@ -1,5 +1,7 @@
 import os
 import asyncio
+#Uvloop levereges the speed of asyncio by 2-4 times on average: pip install uvloop
+import uvloop
 import concurrent.futures
 import re
 import time
@@ -29,6 +31,8 @@ from loguru import logger
 from reward import Reward
 from prompt_datasets.cc_100 import CC100
 
+#Uvloop setup: dramatically improves the performance of validator
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 logger.add("logs/log_{time:YYYY-MM-DD}.log", rotation="1 day", level="INFO")
 
