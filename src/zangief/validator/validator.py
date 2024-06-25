@@ -1,5 +1,7 @@
 import os
 import asyncio
+#Uvloop increases the speed of asyncio by 2-4 times on average.
+import uvloop
 import concurrent.futures
 import re
 import time
@@ -34,6 +36,8 @@ logger.add("logs/log_{time:YYYY-MM-DD}.log", rotation="1 day", level="INFO")
 
 IP_REGEX = re.compile(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+")
 
+#Uvloop setup
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 def extract_address(string: str):
     """
